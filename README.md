@@ -1,5 +1,7 @@
 # EGLC Template
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fd787855-1750-4019-9654-8b8c599eb095/deploy-status)](https://app.netlify.com/sites/eglc-template/deploys)
+
 Proyectos que inspiraron este template:
 
 - Fundar: [https://complejidadeconomicaverde.fund.ar/](https://complejidadeconomicaverde.fund.ar/)
