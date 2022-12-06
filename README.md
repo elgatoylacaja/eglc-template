@@ -1,34 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# EGLC Template
 
-## Getting Started
+Proyectos que inspiraron este template:
 
-First, run the development server:
+- Fundar: [https://complejidadeconomicaverde.fund.ar/](https://complejidadeconomicaverde.fund.ar/)
+- Cedes: [https://cedes-eglc.netlify.app/](https://cedes-eglc.netlify.app/)
+- CET: [https://chicasentecnologia.org/futuro-programado/](https://chicasentecnologia.org/futuro-programado/)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Herramientas que usamos:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [https://nextjs.org/](https://nextjs.org/)
+- [https://mui.com/core/](https://mui.com/core/)
+- [http://archieml.org/](http://archieml.org/)
+- [https://d3js.org/](https://d3js.org/)
+- react-scrollama (no funciona del todo bien)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Todos estos proyectos usan ArchieML para que podamos editar contenido en docs y no haya que tocar código.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Algunos docs de ejemplo:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Fundar [https://docs.google.com/document/d/1m7h0Gp5edk2oNvN6F4GtPXiYTpLkp-Wt1P3M6x20JYA/edit](https://docs.google.com/document/d/1m7h0Gp5edk2oNvN6F4GtPXiYTpLkp-Wt1P3M6x20JYA/edit)
+- Cedes [https://docs.google.com/document/d/1EQpZht7PsXb9pFCTNboHA70xJEy143AP_GxQ6lGXpLI/edit?usp=sharing](https://docs.google.com/document/d/1EQpZht7PsXb9pFCTNboHA70xJEy143AP_GxQ6lGXpLI/edit?usp=sharing)
+- CET [https://docs.google.com/document/d/1kADJb1_mPMQnnI_Ckuh3fuz9Y3WpQM-TEWM9D06HDTc/edit?usp=sharing](https://docs.google.com/document/d/1kADJb1_mPMQnnI_Ckuh3fuz9Y3WpQM-TEWM9D06HDTc/edit?usp=sharing)
 
-## Learn More
+Doc usado para este template con la intención de mostrar las distintas cosas que se pueden hacer.
 
-To learn more about Next.js, take a look at the following resources:
+- https://docs.google.com/document/d/1asLNLwfJ9BobDVTDEDatl3EYMQLccRxNFYTQx_xbFEo/edit
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+También buscamos ejemplos de otras organizaciones como:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- The Pudding: [https://github.com/the-pudding/svelte-starter](https://github.com/the-pudding/svelte-starter)
+- The Guardian: [https://github.com/guardian/dotcom-rendering/blob/main/dotcom-rendering/README.md](https://github.com/guardian/dotcom-rendering/blob/main/dotcom-rendering/README.md)
