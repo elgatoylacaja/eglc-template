@@ -101,6 +101,7 @@ export default function Home({ parsed }: { parsed: ParsedDoc }) {
                   key={item.key}
                   href={item.to}
                   target={item.to.startsWith("#") ? "_self" : "_blank"}
+                  rel="noreferrer noopener"
                 >
                   {item.value}
                 </a>
