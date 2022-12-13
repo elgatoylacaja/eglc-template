@@ -1,10 +1,8 @@
+import { Grid, Typography, useTheme } from "@mui/material";
 import { GetStaticProps } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import { useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import { Block, getParsedDoc, ParsedDoc } from "../src/utils/archie-ml";
-import styles from "../styles/Home.module.css";
 
 const RenderBlock = ({ block }: { block: Block }) => {
   switch (block.key) {
@@ -26,7 +24,7 @@ const RenderBlock = ({ block }: { block: Block }) => {
                 }}
                 key={step.id || i}
               >
-                {step.content}
+                <ReactMarkdown>{step.content}</ReactMarkdown>
               </div>
             );
           })}
@@ -40,6 +38,12 @@ const RenderBlock = ({ block }: { block: Block }) => {
             a: ({ node, ...props }) => (
               <a {...props} target="_blank" rel="noreferrer noopener" />
             ),
+            h1: ({ node, ...props }) => <Typography variant="h1" {...props} />,
+            h2: ({ node, ...props }) => <Typography variant="h2" {...props} />,
+            h3: ({ node, ...props }) => <Typography variant="h3" {...props} />,
+            h4: ({ node, ...props }) => <Typography variant="h4" {...props} />,
+            h5: ({ node, ...props }) => <Typography variant="h5" {...props} />,
+            h6: ({ node, ...props }) => <Typography variant="h6" {...props} />,
           }}
         >
           {block.value}
@@ -49,10 +53,20 @@ const RenderBlock = ({ block }: { block: Block }) => {
   }
 };
 
+const get = (object: Record<string, any>, path: string) => {
+  const keys = path.split(".");
+  let result = object;
+  for (const key of keys) {
+    result = result[key];
+  }
+  return result;
+};
+
 export default function Home({ parsed }: { parsed: ParsedDoc }) {
-  console.log(parsed);
+  const theme = useTheme();
+
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>{parsed.title}</title>
         <meta name="description" content={parsed.description} />
@@ -69,6 +83,7 @@ export default function Home({ parsed }: { parsed: ParsedDoc }) {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
+            padding: "0 24px",
           }}
         >
           <div
@@ -98,15 +113,31 @@ export default function Home({ parsed }: { parsed: ParsedDoc }) {
         <nav>Algo</nav>
       )}
 
-      <main className={styles.main}>
-        {parsed.sections.map((section) => {
+      <main>
+        {parsed.sections.map((section, i) => {
           return (
-            <section id={section.id} style={{ minHeight: "100vh" }}>
-              <h6>{section.sectionTitle}</h6>
-              <h1>{section.title}</h1>
-              {section.blocks.map((block, i) => {
-                return <RenderBlock key={block.id || i} block={block} />;
-              })}
+            <section
+              id={section.id}
+              key={section.id || i}
+              style={{
+                minHeight: "calc(100vh - 64px)",
+                paddingTop: "64px",
+                background: section.background?.includes("palette")
+                  ? (get(theme, section.background) as unknown as string)
+                  : section.background,
+              }}
+            >
+              <Grid container>
+                <Grid item xs={1} lg={3}></Grid>
+                <Grid item xs={10} lg={6}>
+                  <Typography variant="h6">{section.sectionTitle}</Typography>
+                  <Typography variant="h1">{section.title}</Typography>
+                  {section.blocks.map((block, i) => {
+                    return <RenderBlock key={block.id || i} block={block} />;
+                  })}
+                </Grid>
+                <Grid item xs={1} lg={3}></Grid>
+              </Grid>
             </section>
           );
         })}

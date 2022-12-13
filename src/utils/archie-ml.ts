@@ -34,6 +34,7 @@ interface Section {
   title: string;
   internalMenu?: { id: string; title: string }[];
   blocks: Block[];
+  background?: string;
 }
 
 type GraphBlock = {
