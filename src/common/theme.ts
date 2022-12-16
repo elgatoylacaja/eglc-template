@@ -4,10 +4,10 @@ const theme = createTheme({
   breakpoints: {
     values: {
       xs: 0,
-      sm: 576,
-      md: 768,
-      lg: 992,
-      xl: 1200,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
     },
   },
   palette: {
@@ -30,12 +30,15 @@ const theme = createTheme({
         lineHeight: "160%",
         color: "#1d1d1d",
       },
+      body1: {
+        fontSize: '18px'
+      },
       h1: {
-        fontSize: '64px'
+        fontSize: "64px",
       },
       h2: {
-        fontSize: '42px'
-      }
+        fontSize: "42px",
+      },
     };
   },
 });

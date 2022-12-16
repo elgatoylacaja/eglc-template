@@ -20,13 +20,13 @@ export interface ParsedDoc {
   sections: Section[];
 }
 
-type NavMenuItem = {
+export type NavMenuItem = {
   key: string;
   to: string;
   value: string;
 };
 
-interface Section {
+export interface Section {
   key: "section";
   id?: string;
   image?: string;
@@ -37,31 +37,33 @@ interface Section {
   background?: string;
 }
 
-type GraphBlock = {
-  key: "graph";
-};
-
-type ScrollyStep = {
-  key: "scrolly-vstf";
-  content: string;
-  id?: string;
-};
-
-type ScrollyBlock = {
-  key: "scrolly";
-  steps: ScrollyStep[];
-};
-
-type TextBlock = {
-  key: "text";
-  value: string;
-};
-
-export type Block = {
+interface BlockBase {
   id?: string;
   value: string;
   background?: string;
-} & (TextBlock | ScrollyBlock | GraphBlock);
+}
+
+export interface GraphBlock extends BlockBase {
+  key: "graph-by-id";
+}
+
+export interface ScrollyBlock extends BlockBase {
+  key: "scrolly-by-id";
+  steps?: ScrollyStep[];
+}
+
+export interface ScrollyStep {
+  key: "scrolly-card";
+  content: string;
+  id?: string;
+}
+
+interface TextBlock extends BlockBase {
+  key: "text";
+  value: string;
+}
+
+export type Block = TextBlock | ScrollyBlock | GraphBlock;
 
 // const schema = Yup.object({
 //   title: Yup.string().required(),
