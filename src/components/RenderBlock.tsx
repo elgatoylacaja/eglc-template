@@ -21,6 +21,7 @@ const RenderBlock = ({ block }: { block: Block }) => {
       return <CustomComponent block={block} />;
     }
     case "text": {
+      // TODO: Acá hay que ajustar estilos del theme con como escribimos eso en el doc
       return (
         <div id={block.id}>
           <ReactMarkdown
@@ -47,6 +48,9 @@ const RenderBlock = ({ block }: { block: Block }) => {
                 <Typography variant="h6" {...props} />
               ),
               img: ({ node, ...props }) => <Image {...props} />,
+              p: ({ node, ...props }) => (
+                <Typography variant="body2" {...props} />
+              ),
             }}
             rehypePlugins={[rehypeRaw]}
           >
