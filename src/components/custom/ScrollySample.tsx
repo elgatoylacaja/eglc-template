@@ -1,23 +1,16 @@
 import { Grid, styled } from "@mui/material";
 import { useState } from "react";
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { ScrollyStep } from "../../utils/archie-ml";
 import { EventParams, Scrollama, Step } from "../../utils/scrollytelling";
+import { ScrollyCard, ScrollyCardContainer } from "../Scrolly";
 
-const ScrollyCard = styled("div")(
-  ({ theme }) => `
-  background: white;
-  padding: 16px 24px;
-  border-radius: 8px;
-  max-width: 400px;
-  border: 1px solid #1d1d1d;
-  width: 100%
-`
-);
+const sampleSteps = [
+  { text: "Step 0", data: 0 },
+  { text: "Step 1", data: 1 },
+  { text: "Step 2", data: 2 },
+  { text: "Step 3", data: 3 },
+];
 
-const ScrollyWithDocSteps = (props: { steps: ScrollyStep[] }) => {
-  const { steps } = props;
-
+const ScrollySample = () => {
   const [currentStep, currentSetStep] = useState(0);
 
   const onStepEnter = ({ data }: EventParams<number>) => {
@@ -50,61 +43,30 @@ const ScrollyWithDocSteps = (props: { steps: ScrollyStep[] }) => {
           }}
         ></div>
       </Grid>
-      <Grid
-        item
-        xs={12}
-        md={6}
-        container
-        direction={"column"}
-        gap={"25vh"}
-        alignItems="center"
-      >
+      <Grid item xs={12} md={6}>
         <Scrollama
           id={"scrolly-sample"}
           onStepEnter={onStepEnter}
           offset={0.5}
           debug
         >
-          <Step data={0}>
-            <ScrollyCard
-              style={{
-                opacity: currentStep === 0 ? 1 : 0.2,
-              }}
-            >
-              Step 0
-            </ScrollyCard>
-          </Step>
-          <Step data={1}>
-            <ScrollyCard
-              style={{
-                opacity: currentStep === 1 ? 1 : 0.2,
-              }}
-            >
-              Step 1
-            </ScrollyCard>
-          </Step>
-          <Step data={2}>
-            <ScrollyCard
-              style={{
-                opacity: currentStep === 2 ? 1 : 0.2,
-              }}
-            >
-              Step 2
-            </ScrollyCard>
-          </Step>
-          <Step data={3}>
-            <ScrollyCard
-              style={{
-                opacity: currentStep === 3 ? 1 : 0.2,
-              }}
-            >
-              Step 3
-            </ScrollyCard>
-          </Step>
+          {sampleSteps.map((step, index) => (
+            <Step data={step.data} key={index}>
+              <ScrollyCardContainer
+                style={{
+                  opacity: currentStep === step.data ? 1 : 0.2,
+                  paddingTop: index === 0 ? "0" : "100px",
+                  paddingBottom: index === 0 ? "200px" : "100px",
+                }}
+              >
+                <ScrollyCard>{step.text}</ScrollyCard>
+              </ScrollyCardContainer>
+            </Step>
+          ))}
         </Scrollama>
       </Grid>
     </Grid>
   );
 };
 
-export default ScrollyWithDocSteps;
+export default ScrollySample;

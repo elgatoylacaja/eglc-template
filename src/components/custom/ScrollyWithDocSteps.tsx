@@ -3,17 +3,7 @@ import { useState } from "react";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { ScrollyStep } from "../../utils/archie-ml";
 import { EventParams, Scrollama, Step } from "../../utils/scrollytelling";
-
-const ScrollyCard = styled("div")(
-  ({ theme }) => `
-  background: white;
-  padding: 16px 24px;
-  border-radius: 8px;
-  max-width: 400px;
-  border: 1px solid #1d1d1d;
-  width: 100%
-`
-);
+import { ScrollyCard, ScrollyCardContainer } from "../Scrolly";
 
 const ScrollyWithDocSteps = (props: { steps: ScrollyStep[] }) => {
   const { steps } = props;
@@ -38,7 +28,7 @@ const ScrollyWithDocSteps = (props: { steps: ScrollyStep[] }) => {
         style={{
           position: "sticky",
           height: "fit-content",
-          top: 'calc(64px + 32px)'
+          top: "calc(64px + 32px)",
         }}
       >
         <div
@@ -56,25 +46,25 @@ const ScrollyWithDocSteps = (props: { steps: ScrollyStep[] }) => {
         md={6}
         container
         direction={"column"}
-        gap={"25vh"}
         alignItems="center"
       >
         <Scrollama
           id={"scrolly-with-doc-steps"}
           onStepEnter={onStepEnter}
           offset={0.5}
-          debug
         >
-          {steps.map((step, i) => {
+          {steps.map((step, i, l) => {
             return (
               <Step data={i} key={step.id || i}>
-                <ScrollyCard
+                <ScrollyCardContainer
                   style={{
                     opacity: currentStep === i ? 1 : 0.2,
                   }}
                 >
-                  <ReactMarkdown>{step.content}</ReactMarkdown>
-                </ScrollyCard>
+                  <ScrollyCard>
+                    <ReactMarkdown>{step.content}</ReactMarkdown>
+                  </ScrollyCard>
+                </ScrollyCardContainer>
               </Step>
             );
           })}

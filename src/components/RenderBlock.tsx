@@ -1,8 +1,18 @@
 import { Typography } from "@mui/material";
+import { styled } from "@mui/system";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import { Block } from "../utils/archie-ml";
 import CustomComponent from "./custom";
+
+const Image = styled("img")(({ theme }) => ({
+  maxWidth: "min(100%, 600px)",
+  width: "100%",
+  [theme.breakpoints.down("sm")]: {
+    width: "100vw",
+    maxWidth: "100vw",
+  },
+}));
 
 const RenderBlock = ({ block }: { block: Block }) => {
   switch (block.key) {
@@ -36,6 +46,7 @@ const RenderBlock = ({ block }: { block: Block }) => {
               h6: ({ node, ...props }) => (
                 <Typography variant="h6" {...props} />
               ),
+              img: ({ node, ...props }) => <Image {...props} />,
             }}
             rehypePlugins={[rehypeRaw]}
           >
@@ -43,6 +54,9 @@ const RenderBlock = ({ block }: { block: Block }) => {
           </ReactMarkdown>
         </div>
       );
+    }
+    case "custom-component": {
+      return <div>custom component {block.value}</div>;
     }
     default: {
       return <span>Unknown block: {block.key}</span>;

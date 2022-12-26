@@ -4,30 +4,6 @@ import { Section } from "../utils/archie-ml";
 import InternalMenu from "./InternalMenu";
 import RenderBlock from "./RenderBlock";
 
-import { styled } from "@mui/material/styles";
-
-const DebugBox = styled("div")(
-  ({ theme }) => `
-  height: 20px;
-  width: 20px;
-  position: absolute;
-  ${theme.breakpoints.between("xs", "sm")} {
-    background: black;
-  }
-  ${theme.breakpoints.between("sm", "md")} {
-    background: yellow;
-  }
-  ${theme.breakpoints.between("md", "lg")} {
-    background: red;
-  }
-  ${theme.breakpoints.between("lg", "xl")} {
-    background: blue;
-  }
-  ${theme.breakpoints.up("xl")} {
-    background: green;
-  }
-`
-);
 
 export default function RenderSection({ section }: { section: Section }) {
   const theme = useTheme();
@@ -37,7 +13,7 @@ export default function RenderSection({ section }: { section: Section }) {
       id={section.id}
       key={section.id}
       style={{
-        minHeight: "calc(100vh - 64px)",
+        // minHeight: "calc(100vh - 64px)",
         paddingTop: "64px",
         background: section.background?.includes("palette")
           ? get(theme, section.background)
@@ -45,7 +21,6 @@ export default function RenderSection({ section }: { section: Section }) {
         paddingBottom: "64px",
       }}
     >
-      <DebugBox />
       <Hidden lgDown>
         {section.internalMenu !== undefined && (
           <InternalMenu menu={section.internalMenu} />

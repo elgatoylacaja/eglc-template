@@ -63,7 +63,16 @@ interface TextBlock extends BlockBase {
   value: string;
 }
 
-export type Block = TextBlock | ScrollyBlock | GraphBlock;
+interface CustomComponentBlock extends BlockBase {
+  key: "custom-component";
+  value: string;
+}
+
+export type Block =
+  | TextBlock
+  | ScrollyBlock
+  | GraphBlock
+  | CustomComponentBlock;
 
 // const schema = Yup.object({
 //   title: Yup.string().required(),

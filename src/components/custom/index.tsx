@@ -34,7 +34,7 @@ export default function CustomComponent({ block }: Props) {
         );
       } else {
         return (
-          <div>
+          <div style={{ color: "red" }}>
             {key} - {value} - Not found
           </div>
         );
@@ -50,14 +50,14 @@ export default function CustomComponent({ block }: Props) {
           return <Scrolly />;
         }
       } else {
-        <div>
+        <div style={{ color: "red" }}>
           {key} - {value} - Not found
         </div>;
       }
     }
     default: {
       return (
-        <div>
+        <div style={{ color: "red" }}>
           {key} - {value} - Not found
         </div>
       );
